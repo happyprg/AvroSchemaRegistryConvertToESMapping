@@ -1,9 +1,9 @@
-I saw the below issue at ES forum.
-[how-to-convert-avro-schema-to-elastic-search-mapping](https://discuss.elastic.co/t/how-to-convert-avro-schema-to-elastic-search-mapping/114749)
-So I made this project for solving it.
+* I saw the below issue at ES forum.
+* [how-to-convert-avro-schema-to-elastic-search-mapping](https://discuss.elastic.co/t/how-to-convert-avro-schema-to-elastic-search-mapping/114749)
+* So I made this project for solving it.
 ![Demo Image](readme.png?raw=true "Demo Image")
 
-It has two features.
+It has some features.
 First, you can load Avro schema using Registry API
 Secondly, you can convert Avro schema to Elasticsearch Mapping simplify
 
