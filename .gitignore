@@ -33,8 +33,9 @@ hs_err_pid*
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
-# Package Files #
+ Package Files #
 *.jar
+!gradle/wrapper/gradle-wrapper.jar
 *.war
 *.ear
 *.zip
