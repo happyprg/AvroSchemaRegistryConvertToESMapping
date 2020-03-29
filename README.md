@@ -12,9 +12,6 @@ Finally, you can get converting result that Avro schema to Elasticsearch Mapping
 
 How to use
 * gradle build
-* java -jar target/gs-serving-web-content-0.1.0.jar
-* https://spring.io/guides/gs/serving-web-content/
-* docker build -t gs-serving-web-content-0.1.0:v1 .
-* docker push gs-serving-web-content-0.1.0:v1
+* java -jar ./build/libs/gs-serving-web-content.jar
 
 Thank you!

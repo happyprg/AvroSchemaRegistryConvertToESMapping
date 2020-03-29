@@ -10,8 +10,7 @@ Finally, you can get converting result that Avro schema to Elasticsearch Mapping
 
 How to make dockerizing
 * ./gradle build
-* java -jar target/gs-serving-web-content-0.1.0.jar
-* https://spring.io/guides/gs/serving-web-content/
+* ./gradle run
 * docker build -t gs-serving-web-content-0.1.0:v1 .
 * docker push gs-serving-web-content-0.1.0:v1
 
