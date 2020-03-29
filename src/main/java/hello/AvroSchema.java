@@ -77,7 +77,8 @@ public class AvroSchema {
                             final String normalizeDataType = normalizeDataTypeToES(lookupType);
                             if (normalizeDataType == null) {
                                 System.out.println(
-                                        "could not handling this type of field - " + field + ", lookupType - " + lookupType);
+                                        "could not handling this type of field - " + field + ", lookupType - "
+                                        + lookupType);
                                 continue;
                             }
 
@@ -103,7 +104,7 @@ public class AvroSchema {
         }
         builder.endObject();
         builder.close();
-        return  Strings.toString(builder);
+        return JsonWriter.formatJson(Strings.toString(builder));
     }
 
     public String getData() {
