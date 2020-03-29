@@ -5,12 +5,15 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
 
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-          integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+          integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+          crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-          integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+          integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+          crossorigin="anonymous"></script>
   <style>
     .vertical-center {
       min-height: 100%; /* Fallback for vh unit */
@@ -47,20 +50,44 @@
     }
   </style>
   <script>
+
+    const example = `{
+      "type":"record",
+      "namespace":"com.example",
+      "name":"FullName",
+      "fields":[
+      {
+        "name":"first",
+        "type":"string"
+      },
+      {
+        "name":"last",
+        "type":"string"
+      }
+    ]
+    }`
+
+    $( document ).ready(function() {
+      $("#avroSchema").val(example)
+      convertScheme();
+    });
+
+
+    convertScheme();
     function loadSchema() {
-      $.get( "avro/load/schema?url="+$("#url").val(), function( data ) {
-        $("#avroSchema").val( JSON.stringify(JSON.parse(data),null,2));
+      $.get("avro/load/schema?url=" + $("#url").val(), function (data) {
+        $("#avroSchema").val(JSON.stringify(JSON.parse(data), null, 2));
         convertScheme();
       });
     }
 
     function convertScheme() {
-      $.post( "avro/convert/schema/to/es", $("#avroSchema").val())
-        .done(function( data ) {
-        $("#esSchema").val( JSON.stringify(JSON.parse(data),null,2));
+      $.post("avro/convert/schema/to/es", $("#avroSchema").val()).done(function (data) {
+        $("#esSchema").val(JSON.stringify(JSON.parse(data), null, 2));
       });
     }
-    $(function() {
+
+    $(function () {
       loadSchema();
     });
 
@@ -76,10 +103,13 @@
   </div>
   <div class="row">
     <div class="col i-am-centered">
-      <button onclick="loadSchema()" type="button" class="btn btn-info">Load Avro schema from registry url</button>
+      <button onclick="loadSchema()" type="button" class="btn btn-info">Load Avro schema from registry url
+      </button>
     </div>
     <div class="col i-am-centered">
-      <button onclick="convertScheme()" type="button" class="btn btn-success">Convert Avro schema to ES Mapping</button>
+      <button onclick="convertScheme()" type="button" class="btn btn-success">Convert Avro schema to ES
+        Mapping
+      </button>
     </div>
   </div>
   <div class="jumbotron vertical-center">

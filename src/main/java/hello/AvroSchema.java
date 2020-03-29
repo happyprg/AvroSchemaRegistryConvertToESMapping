@@ -14,6 +14,7 @@ import org.apache.avro.Schema.Field;
 import org.apache.avro.Schema.Parser;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.elasticsearch.common.Strings;
 import org.elasticsearch.common.xcontent.XContentBuilder;
 import org.elasticsearch.common.xcontent.XContentFactory;
 import org.json.JSONException;
@@ -76,7 +77,8 @@ public class AvroSchema {
                             final String normalizeDataType = normalizeDataTypeToES(lookupType);
                             if (normalizeDataType == null) {
                                 System.out.println(
-                                        "could not handling this type of field - " + field + ", lookupType - " + lookupType);
+                                        "could not handling this type of field - " + field + ", lookupType - "
+                                        + lookupType);
                                 continue;
                             }
 
@@ -102,7 +104,7 @@ public class AvroSchema {
         }
         builder.endObject();
         builder.close();
-        return JsonWriter.formatJson(builder.string());
+        return JsonWriter.formatJson(Strings.toString(builder));
     }
 
     public String getData() {

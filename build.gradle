@@ -1,28 +1,32 @@
 buildscript {
     repositories {
         mavenCentral()
+        jcenter()
+        google()
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.10.RELEASE")
     }
 }
+plugins {
+    id 'org.springframework.boot' version '2.2.6.RELEASE'
+}
 
 apply plugin: 'java'
-apply plugin: 'eclipse'
-apply plugin: 'idea'
-apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
 
 jar {
-    baseName = 'gs-serving-web-content'
-    version =  '0.1.0'
+    archivesBaseName='gs-serving-web-content'
+    archiveVersion='0.1.0'
 }
+
 
 repositories {
     mavenCentral()
 }
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+sourceCompatibility = 11
+targetCompatibility = 11
 
 dependencies {
 
@@ -47,8 +51,19 @@ dependencies {
     // https://mvnrepository.com/artifact/org.apache.avro/avro
     compile group: 'org.apache.avro', name: 'avro', version: '1.8.2'
 
-    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
-    compile("org.springframework.boot:spring-boot-devtools")
-    compile("org.springframework.boot:spring-boot-starter-test")
-}
+    compile group: 'org.json', name: 'json', version: '20190722'
 
+
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+
+// https://mvnrepository.com/artifact/org.hamcrest/hamcrest-core
+    testCompile group: 'org.hamcrest', name: 'hamcrest-core', version: '2.2'
+// https://mvnrepository.com/artifact/junit/junit
+    testCompile group: 'junit', name: 'junit', version: '4.13'
+
+// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-test
+    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '2.2.6.RELEASE'
+
+
+}

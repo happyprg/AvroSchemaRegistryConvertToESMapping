@@ -47,34 +47,35 @@ public class ApplicationTest {
     @Test
     public void convertingRequest() throws Exception {
         final MockHttpServletRequestBuilder convertingRequest = post("/avro/convert/schema/to/es");
-        convertingRequest.content("{\n"
-                                  + "   \"type\" : \"record\",\n"
-                                  + "   \"namespace\" : \"Tutorialspoint\",\n"
-                                  + "   \"name\" : \"Employee\",\n"
-                                  + "   \"fields\" : [\n"
-                                  + "      { \"name\" : \"Name\" , \"type\" : \"string\" },\n"
-                                  + "      { \"name\" : \"Age\" , \"type\" : \"int\" }\n"
-                                  + "   ]\n"
+        String newLine = System.lineSeparator();
+        convertingRequest.content("{" + newLine
+                                  + "   \"type\" : \"record\"," + newLine
+                                  + "   \"namespace\" : \"Tutorialspoint\"," + newLine
+                                  + "   \"name\" : \"Employee\"," + newLine
+                                  + "   \"fields\" : [" + newLine
+                                  + "      { \"name\" : \"Name\" , \"type\" : \"string\" }," + newLine
+                                  + "      { \"name\" : \"Age\" , \"type\" : \"int\" }" + newLine
+                                  + "   ]" + newLine
                                   + "}");
         mockMvc.perform(convertingRequest)
-               .andExpect(content().string(containsString("{\n"
-                                                          + "  \"mappings\":{\n"
-                                                          + "    \"doc\":{\n"
-                                                          + "      \"dynamic\":\"true\",\n"
-                                                          + "      \"numeric_detection\":true,\n"
-                                                          + "      \"properties\":{\n"
-                                                          + "        \"Name\":{\n"
-                                                          + "          \"type\":\"keyword\",\n"
-                                                          + "          \"ignore_above\":256,\n"
-                                                          + "          \"norms\":false,\n"
-                                                          + "          \"index_options\":\"freqs\"\n"
-                                                          + "        },\n"
-                                                          + "        \"Age\":{\n"
-                                                          + "          \"type\":\"integer\"\n"
-                                                          + "        }\n"
-                                                          + "      }\n"
-                                                          + "    }\n"
-                                                          + "  }\n"
+               .andExpect(content().string(containsString("{" + newLine
+                                                          + "  \"mappings\":{" + newLine
+                                                          + "    \"doc\":{" + newLine
+                                                          + "      \"dynamic\":\"true\"," + newLine
+                                                          + "      \"numeric_detection\":true," + newLine
+                                                          + "      \"properties\":{" + newLine
+                                                          + "        \"Name\":{" + newLine
+                                                          + "          \"type\":\"keyword\"," + newLine
+                                                          + "          \"ignore_above\":256," + newLine
+                                                          + "          \"norms\":false," + newLine
+                                                          + "          \"index_options\":\"freqs\"" + newLine
+                                                          + "        }," + newLine
+                                                          + "        \"Age\":{" + newLine
+                                                          + "          \"type\":\"integer\"" + newLine
+                                                          + "        }" + newLine
+                                                          + "      }" + newLine
+                                                          + "    }" + newLine
+                                                          + "  }" + newLine
                                                           + "}")));
     }
 }
