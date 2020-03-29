@@ -14,6 +14,7 @@ import org.apache.avro.Schema.Field;
 import org.apache.avro.Schema.Parser;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.elasticsearch.common.Strings;
 import org.elasticsearch.common.xcontent.XContentBuilder;
 import org.elasticsearch.common.xcontent.XContentFactory;
 import org.json.JSONException;
@@ -102,7 +103,7 @@ public class AvroSchema {
         }
         builder.endObject();
         builder.close();
-        return JsonWriter.formatJson(builder.string());
+        return  Strings.toString(builder);
     }
 
     public String getData() {

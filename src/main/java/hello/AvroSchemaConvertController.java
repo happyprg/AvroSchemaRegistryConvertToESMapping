@@ -21,8 +21,8 @@ public class AvroSchemaConvertController {
     public @ResponseBody
     String loadFromSchemaUrl(@ModelAttribute AvroSchema avroSchema) throws IOException, JSONException {
         if (StringUtils.isNotBlank(avroSchema.getUrl())) {
-            return StringEscapeUtils.unescapeJson(AvroSchema.loadFromSchemaUrl(avroSchema.getUrl()).getString("schema")
-                                                            .toString());
+            return StringEscapeUtils.unescapeJson(
+                    AvroSchema.loadFromSchemaUrl(avroSchema.getUrl()).getString("schema"));
         }
         return StringUtils.EMPTY;
     }
@@ -32,7 +32,7 @@ public class AvroSchemaConvertController {
     String greeting(@RequestBody String avroSchema) throws IOException, JSONException {
         final String decode = URLDecoder.decode(avroSchema, "UTF-8");
         if (StringUtils.isNotBlank(decode)) {
-            return AvroSchema.convertToESMapping(decode).toString();
+            return AvroSchema.convertToESMapping(decode);
         }
         return StringUtils.EMPTY;
     }

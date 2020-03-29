@@ -8,8 +8,8 @@ First, you should load Avro schema using Registry API or modify text on left pan
 Second, you should click "convert" button on right panel
 Finally, you can get converting result that Avro schema to Elasticsearch Mapping simplify
 
-How to use
-* gradle build
+How to make dockerizing
+* ./gradle build
 * java -jar target/gs-serving-web-content-0.1.0.jar
 * https://spring.io/guides/gs/serving-web-content/
 * docker build -t gs-serving-web-content-0.1.0:v1 .
