@@ -1,5 +1,5 @@
 * I saw the below issue at ES forum.
-* [how-to-convert-avro-schema-to-elastic-search-mapping](https://discuss.elastic.co/t/how-to-convert-avro-schema-to-elastic-search-mapping/114749)
+   * [how-to-convert-avro-schema-to-elastic-search-mapping](https://discuss.elastic.co/t/how-to-convert-avro-schema-to-elastic-search-mapping/114749)
 * So I made this project for solving it.
 
 It has some features.
