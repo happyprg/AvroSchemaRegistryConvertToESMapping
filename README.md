@@ -3,8 +3,8 @@
 
 
 It has some features.
-First, you should load Avro schema using Registry API or modify text on left panel
-Second, you should click "convert" button on right panel
+Firstly, you should load Avro schema using Registry API or modify text on left panel
+Secondly, you should click "convert" button on right panel
 Finally, you can get converting result that Avro schema to Elasticsearch Mapping simplify
 
 ![Demo Image](docs/readme.png?raw=true "readme")
